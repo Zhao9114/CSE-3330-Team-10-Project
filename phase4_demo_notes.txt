@@ -1,0 +1,180 @@
+Phase 4 Demo Notes
+Team 10 Smoothie Shop Database
+
+Verified on Omega
+- Date tested: 2026-04-14
+- Server: omega.uta.edu
+- Oracle connection used: mxi0287@oracleacademicdb
+- Result: full run succeeded with no Oracle errors using:
+  1. projectDBdrop.sql
+  2. projectDBcreate.sql
+  3. projectDBinsert.sql
+  4. projectDBqueries.sql
+  5. projectDBupdate.sql
+  6. projectDBqueries.sql again
+
+Phase 4 Requirement Check
+- DDL script exists: projectDBcreate.sql
+- Insert script exists: projectDBinsert.sql
+- Update script exists: projectDBupdate.sql
+- Drop script exists: projectDBdrop.sql
+- Ad-hoc query script exists: projectDBqueries.sql
+- Table prefix requirement satisfied: Spring26_S008_T10_
+- Number of tables created: 13
+- Trigger requirement covered in projectDBcreate.sql
+- No SELECT * in query file
+- Query file includes English descriptions and expected output comments
+- Query file includes:
+  - at least 2 GROUP BY / HAVING / aggregate queries
+  - at least 2 ROLLUP / CUBE queries
+  - at least 1 DIVISION query
+  - LIKE
+  - ORDER BY + FETCH FIRST N ROWS ONLY
+- Full script sequence runs on Oracle
+
+Tables Created
+- Spring26_S008_T10_Ingredient
+- Spring26_S008_T10_Supplier
+- Spring26_S008_T10_Staff
+- Spring26_S008_T10_Menu
+- Spring26_S008_T10_Orders
+- Spring26_S008_T10_Inventory
+- Spring26_S008_T10_Supplier_Contact
+- Spring26_S008_T10_Shift
+- Spring26_S008_T10_Recipe
+- Spring26_S008_T10_Delivery
+- Spring26_S008_T10_Delivery_Item
+- Spring26_S008_T10_Contained
+- Spring26_S008_T10_Contain_Customization
+
+Triggers Created
+- Spring26_S008_T10_trg_order_total
+  - Recomputes Orders.total_price after INSERT, UPDATE, or DELETE on Contained
+- Spring26_S008_T10_trg_delivery_total
+  - Recomputes Delivery.total_cost after INSERT, UPDATE, or DELETE on Delivery_Item
+- Spring26_S008_T10_trg_contained_delete
+  - Deletes related Contain_Customization rows before a Contained row is deleted
+
+Relational Schema Summary
+- Ingredient(ingredient_id, ingredient_name, unit_of_measurement)
+- Supplier(supplier_id, company_name)
+- Supplier_Contact(supplier_id, phone, email)
+- Staff(staff_id, first_name, last_name, hourly_rate)
+- Inventory(inventory_id, reorder_threshold, quantity_on_hand, ingredient_id)
+- Menu(product_id, product_name, category, price)
+- Orders(order_num, order_timestamp, total_price)
+- Shift(staff_id, shift_date, clock_in, clock_out)
+- Recipe(ingredient_id, product_id, amount_required)
+- Delivery(delivery_id, delivery_date, total_cost, staff_id, supplier_id)
+- Delivery_Item(delivery_id, inventory_id, quantity_received, line_cost)
+- Contained(order_num, product_id, quantity)
+- Contain_Customization(order_num, product_id, customization)
+
+How Data Was Populated
+- Data is inserted manually through projectDBinsert.sql
+- Base dataset uses realistic smoothie shop data
+- It includes ingredients, menu products, staff, supplier contacts, deliveries, recipes, orders, contained items, and customizations
+- Foreign keys were checked by live Oracle execution
+- Delivery totals reconcile with delivery item line costs
+
+Base Database Counts
+- Ingredient: 40
+- Supplier: 40
+- Supplier_Contact: 45
+- Staff: 40
+- Menu: 40
+- Orders: 50
+- Inventory: 40
+- Shift: 50
+- Recipe: 117
+- Delivery: 40
+- Delivery_Item: 67
+- Contained: 66
+- Contain_Customization: 40
+- Total rows before update script: 675
+
+Post-Update Counts
+- Supplier: 41
+- Supplier_Contact: 47
+- Orders: 58
+- Shift: 51
+- Delivery: 41
+- Delivery_Item: 70
+- Contained: 76
+- Contain_Customization: 42
+- Total rows after update script: 703
+
+Functionality Test Results
+- projectDBdrop.sql worked cleanly even when tables already existed
+- projectDBcreate.sql created all 13 tables
+- projectDBcreate.sql also created and enabled 3 Oracle triggers
+- projectDBinsert.sql loaded successfully on Oracle after SQL*Plus compatibility cleanup
+- projectDBqueries.sql returned results for all 7 queries
+- projectDBupdate.sql completed successfully
+- Re-running projectDBqueries.sql showed changed results for at least 4 queries
+- Trigger behavior verified on Omega:
+  - deleting a Contained row removed its matching customization row
+  - updating Contained.quantity recalculated Orders.total_price
+  - updating Delivery_Item.line_cost recalculated Delivery.total_cost
+
+Queries That Definitely Change After projectDBupdate.sql
+- Q1 Top-Selling Products
+- Q2 Peak Sales Hours
+- Q4 Revenue ROLLUP
+- Q5 Delivery CUBE
+
+Important Demo Note
+- Q3 does not change after the update because the new supplier total is 228.00, and the query filters with HAVING SUM(di.line_cost) > 400
+- Do not claim Q3 changes during the demo
+
+Business Goal Demo Recommendation
+- Safest demo query: Q2 Peak Sales Hours Analysis
+- Why this is a good choice:
+  - easy to explain in plain English
+  - clearly tied to a Phase 1 business goal
+  - has a clean tabular output
+  - easy to visualize as a bar chart
+  - visibly changes after the update script
+
+Recommended Business Demo Structure
+1. English business question
+   - What hours of the day are busiest for customer orders, and how much revenue is generated during each hour?
+2. SQL query
+   - Use Q2 from projectDBqueries.sql
+3. Query output table
+   - Show the before-update result
+   - Then show the after-update result to prove updates affect the analytics
+4. Visualization
+   - Use a bar chart with sale_hour on the x-axis and either num_orders or hour_revenue on the y-axis
+   - Best talking point: hour 12 becomes the clear lunch rush after inserting clustered noon orders
+
+Good Chart Choices
+- Q1 Top-Selling Products: horizontal bar chart of total_units_sold by product_name
+- Q2 Peak Sales Hours: bar chart of num_orders by sale_hour
+- Q4 Revenue by Category/Product: stacked bar chart or subtotal table, but this is harder to present quickly
+- Q5 Delivery Cost by Supplier/Month: grouped bar chart, but this is also harder to explain live
+
+Best Demo Sequence
+1. Show the EER diagram from Phase 2
+2. Show the revised relational schema from Phase 3 and mention BCNF cleanup based on instructor feedback
+3. Run projectDBdrop.sql
+4. Run projectDBcreate.sql
+5. Run projectDBinsert.sql
+6. Show row counts
+7. Run projectDBqueries.sql
+8. Focus on Q2 as the business-goal demo
+9. Run projectDBupdate.sql
+10. Run projectDBqueries.sql again
+11. Point out how Q1, Q2, Q4, and Q5 changed
+
+What To Say If Asked About Data Volume
+- The assignment says to start around 40-50 rows in each table, and the base dataset now meets or exceeds that target across the schema
+- Some tables are above 50 because the assignment also says "the more the better"
+- The larger recipe, delivery item, contained, and customization tables help demonstrate joins, aggregation, analytics, and update behavior more clearly
+
+What To Bring
+- Final Phase 2 EER diagram
+- Final revised Phase 3 relational mapping
+- All 5 SQL files
+- A simple chart or screenshot for the business-goal demo
+- This notes file or a condensed version of it

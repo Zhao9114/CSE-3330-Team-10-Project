@@ -8,23 +8,9 @@
 -- =============================================================
 
 -- -------------------------------------------------------------
--- UPDATE 1: Raise prices on two smoothies
--- Effect on queries: Category Revenue Breakdown (ROLLUP), avg transaction
--- Before: Mango Madness=7.75, Berry Mix Supreme=8.25
--- After:  Mango Madness=8.25, Berry Mix Supreme=8.75
--- -------------------------------------------------------------
-UPDATE Spring26_S008_T10_Menu
-   SET price = 8.25
- WHERE product_id = 2;
-
-UPDATE Spring26_S008_T10_Menu
-   SET price = 8.75
- WHERE product_id = 9;
-
--- -------------------------------------------------------------
--- UPDATE 2: Restock three low-stock ingredients
+-- UPDATE 1: Restock three low-stock ingredients
 -- Effect on queries: Inventory Reorder Alert query
--- Before: Granola qty=7 (below threshold 5 — actually above, so also
+-- Before: Granola qty=7 (below threshold 5 - actually above, so also
 --         lower threshold to demo the alert), Honey qty=4, Straw IC qty=3
 -- We lower Granola qty to trigger the alert, then restock all three.
 -- -------------------------------------------------------------
@@ -47,25 +33,28 @@ UPDATE Spring26_S008_T10_Inventory
  WHERE ingredient_id = 13;  -- Strawberry Ice Cream restocked
 
 -- -------------------------------------------------------------
--- UPDATE 3: Add a new supplier + contacts
--- Effect on queries: Supplier Expense query, Division query
+-- UPDATE 2: Add a new supplier + contacts
+-- Effect on queries: Division query dataset expands
 -- -------------------------------------------------------------
-INSERT INTO Spring26_S008_T10_Supplier VALUES (6, 'SunRipe Organics');
-INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (6, '945-555-0601', 'hello@sunripe.com');
-INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (6, '945-555-0602', 'orders@sunripe.com');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (41, 'SunRipe Organics');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (41, '945-555-0601', 'hello@sunripe.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (41, '945-555-0602', 'orders@sunripe.com');
 
 -- -------------------------------------------------------------
--- UPDATE 4: Add a new delivery from the new supplier (received by staff 5)
--- Effect on queries: Supplier Expense, CUBE delivery cost query
+-- UPDATE 3: Add a new delivery from the new supplier (received by staff 5)
+-- Effect on queries: CUBE delivery cost query
 -- total_cost = 85.00 + 95.00 + 48.00 = 228.00
 -- -------------------------------------------------------------
-INSERT INTO Spring26_S008_T10_Delivery VALUES (13, DATE '2026-03-28', 228.00, 5, 6);
-INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (13, 3,  45.00,  85.00);  -- Strawberry Chunks
-INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (13, 4,  50.00,  95.00);  -- Banana Slices
-INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (13, 9,  25.00,  48.00);  -- Blueberry Chunks
+INSERT INTO Spring26_S008_T10_Delivery VALUES (41, DATE '2026-03-28', 228.00, 5, 41);
+-- Strawberry Chunks
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (41, 3,  45.00,  85.00);
+-- Banana Slices
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (41, 4,  50.00,  95.00);
+-- Blueberry Chunks
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (41, 9,  25.00,  48.00);
 
 -- -------------------------------------------------------------
--- UPDATE 5: Add 8 new orders clustered at 12:00 (lunch rush)
+-- UPDATE 4: Add 8 new orders clustered at 12:00 (lunch rush)
 -- Effect on queries: Peak Sales Hours shifts hour 12 higher,
 --   top-selling products changes, average transaction value changes
 -- -------------------------------------------------------------
@@ -96,14 +85,14 @@ INSERT INTO Spring26_S008_T10_Contain_Customization VALUES (1054, 13, 'add honey
 INSERT INTO Spring26_S008_T10_Contain_Customization VALUES (1056, 13, 'no banana');
 
 -- -------------------------------------------------------------
--- UPDATE 6: Add new shifts for staff 5 (received new delivery above)
+-- UPDATE 5: Add new shifts for staff 5 (received new delivery above)
 -- Effect on queries: labor cost report
 -- -------------------------------------------------------------
 INSERT INTO Spring26_S008_T10_Shift VALUES (5, DATE '2026-03-28',
     TIMESTAMP '2026-03-28 08:00:00', TIMESTAMP '2026-03-28 16:00:00');
 
 -- -------------------------------------------------------------
--- UPDATE 7: Delete a customization row (tests FK/cascade behavior)
+-- UPDATE 6: Delete a customization row (tests FK/cascade behavior)
 -- Effect on queries: Contain_Customization count changes
 -- -------------------------------------------------------------
 DELETE FROM Spring26_S008_T10_Contain_Customization
@@ -112,7 +101,7 @@ DELETE FROM Spring26_S008_T10_Contain_Customization
    AND customization = 'no banana';
 
 -- -------------------------------------------------------------
--- UPDATE 8: Update a contained quantity
+-- UPDATE 7: Update a contained quantity
 -- Effect on queries: Top-selling products, revenue queries
 -- -------------------------------------------------------------
 UPDATE Spring26_S008_T10_Contained
@@ -131,8 +120,7 @@ COMMIT;
 -- EXPECTED QUERY RESULT CHANGES AFTER THIS SCRIPT:
 -- Q1 (Top-Selling Products): Acai Bowl count increases further
 -- Q2 (Peak Hours): Hour 12 moves up significantly
--- Q3 (Supplier Expense): SunRipe Organics appears with $228.00
--- Q4 (Revenue ROLLUP): smoothie revenue increases due to price updates
+-- Q4 (Revenue ROLLUP): bowl revenue and grand totals change due to new orders
 -- Q5 (Delivery CUBE): New March delivery from new supplier appears
 -- =============================================================
 -- END OF UPDATE SCRIPT

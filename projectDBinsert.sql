@@ -3,12 +3,12 @@
 -- Members: Zheng Yao Wong, Roberto Lira, Mahad Imran, Kaung Zaw Thant
 -- File: projectDBinsert.sql
 -- Purpose: Populate all 13 tables with realistic smoothie shop data
--- Row counts: Ingredient=15, Supplier=5, Supplier_Contact=10, Staff=10,
---   Menu=17, Inventory=15, Shift=50, Recipe=48, Orders=50,
---   Contained=65, Contain_Customization=28, Delivery=12, Delivery_Item=43
+-- Row counts: Ingredient=40, Supplier=40, Supplier_Contact=45, Staff=40,
+--   Menu=40, Inventory=40, Shift=50, Recipe=117, Orders=50,
+--   Contained=66, Contain_Customization=40, Delivery=40, Delivery_Item=67
 -- =============================================================
 
--- INGREDIENT (15)
+-- INGREDIENT (40)
 INSERT INTO Spring26_S008_T10_Ingredient VALUES (1,  'Yogurt Base',          'cup');
 INSERT INTO Spring26_S008_T10_Ingredient VALUES (2,  'Mango Chunks',         'oz');
 INSERT INTO Spring26_S008_T10_Ingredient VALUES (3,  'Strawberry Chunks',    'oz');
@@ -24,15 +24,75 @@ INSERT INTO Spring26_S008_T10_Ingredient VALUES (12, 'Chocolate Ice Cream',  'sc
 INSERT INTO Spring26_S008_T10_Ingredient VALUES (13, 'Strawberry Ice Cream', 'scoop');
 INSERT INTO Spring26_S008_T10_Ingredient VALUES (14, 'Coconut Flakes',       'oz');
 INSERT INTO Spring26_S008_T10_Ingredient VALUES (15, 'Peach Chunks',         'oz');
+INSERT INTO Spring26_S008_T10_Ingredient VALUES (16, 'Spinach',              'oz');
+INSERT INTO Spring26_S008_T10_Ingredient VALUES (17, 'Kale',                 'oz');
+INSERT INTO Spring26_S008_T10_Ingredient VALUES (18, 'Oat Milk',             'cup');
+INSERT INTO Spring26_S008_T10_Ingredient VALUES (19, 'Almond Milk',          'cup');
+INSERT INTO Spring26_S008_T10_Ingredient VALUES (20, 'Chia Seeds',           'tbsp');
+INSERT INTO Spring26_S008_T10_Ingredient VALUES (21, 'Peanut Butter',        'tbsp');
+INSERT INTO Spring26_S008_T10_Ingredient VALUES (22, 'Matcha Powder',        'tsp');
+INSERT INTO Spring26_S008_T10_Ingredient VALUES (23, 'Espresso Shot',        'shot');
+INSERT INTO Spring26_S008_T10_Ingredient VALUES (24, 'Orange Juice',         'cup');
+INSERT INTO Spring26_S008_T10_Ingredient VALUES (25, 'Raspberry Chunks',     'oz');
+INSERT INTO Spring26_S008_T10_Ingredient VALUES (26, 'Blackberry Chunks',    'oz');
+INSERT INTO Spring26_S008_T10_Ingredient VALUES (27, 'Kiwi Chunks',          'oz');
+INSERT INTO Spring26_S008_T10_Ingredient VALUES (28, 'Dragon Fruit',         'oz');
+INSERT INTO Spring26_S008_T10_Ingredient VALUES (29, 'Lemon Juice',          'tbsp');
+INSERT INTO Spring26_S008_T10_Ingredient VALUES (30, 'Lime Juice',           'tbsp');
+INSERT INTO Spring26_S008_T10_Ingredient VALUES (31, 'Mint Leaves',          'leaf');
+INSERT INTO Spring26_S008_T10_Ingredient VALUES (32, 'Whey Protein',         'scoop');
+INSERT INTO Spring26_S008_T10_Ingredient VALUES (33, 'Cocoa Powder',         'tbsp');
+INSERT INTO Spring26_S008_T10_Ingredient VALUES (34, 'Caramel Syrup',        'tbsp');
+INSERT INTO Spring26_S008_T10_Ingredient VALUES (35, 'Cookie Crumbs',        'oz');
+INSERT INTO Spring26_S008_T10_Ingredient VALUES (36, 'Vanilla Syrup',        'tbsp');
+INSERT INTO Spring26_S008_T10_Ingredient VALUES (37, 'Greek Yogurt',         'cup');
+INSERT INTO Spring26_S008_T10_Ingredient VALUES (38, 'Almonds',              'oz');
+INSERT INTO Spring26_S008_T10_Ingredient VALUES (39, 'Oats',                 'oz');
+INSERT INTO Spring26_S008_T10_Ingredient VALUES (40, 'Pomegranate Seeds',    'oz');
 
--- SUPPLIER (5)
+-- SUPPLIER (40)
 INSERT INTO Spring26_S008_T10_Supplier VALUES (1, 'FreshFarm Produce Co.');
 INSERT INTO Spring26_S008_T10_Supplier VALUES (2, 'DairyDirect Supply');
 INSERT INTO Spring26_S008_T10_Supplier VALUES (3, 'Tropical Imports LLC');
 INSERT INTO Spring26_S008_T10_Supplier VALUES (4, 'Sweetland Distributors');
 INSERT INTO Spring26_S008_T10_Supplier VALUES (5, 'NutriBase Wholesale');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (6,  'SunCoast Produce');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (7,  'Metro Dairy Partners');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (8,  'Peak Harvest Foods');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (9,  'Blue Orchard Supply');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (10, 'Valley Fresh Logistics');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (11, 'Riverside Beverage Supply');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (12, 'Golden Tropics Importers');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (13, 'NorthStar Wholesale Foods');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (14, 'Cedar Grove Produce');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (15, 'Harborline Dairy');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (16, 'Sunrise Orchard Partners');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (17, 'LoneStar Fruit Exchange');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (18, 'GreenFork Ingredients');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (19, 'Cascade Creamery Supply');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (20, 'SilverLeaf Organics');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (21, 'RedRiver Produce Hub');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (22, 'Prairie Blend Wholesale');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (23, 'WestGate Food Brokers');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (24, 'Canyon Citrus Supply');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (25, 'Morning Dew Farms');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (26, 'Urban Market Produce');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (27, 'Meadowlane Distributors');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (28, 'Pacific Tropic Traders');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (29, 'Hillcrest Cold Storage');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (30, 'Orchard Point Foods');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (31, 'Granite Peak Ingredients');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (32, 'Delta Fresh Depot');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (33, 'BlueSky Dairy Source');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (34, 'Southern Grove Supply');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (35, 'Maple Street Wholesale');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (36, 'HighPlain Organics');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (37, 'RedBerry Produce');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (38, 'ClearSpring Beverage Co.');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (39, 'Farmhouse Ingredient Co.');
+INSERT INTO Spring26_S008_T10_Supplier VALUES (40, 'Coastal Fruit Network');
 
--- SUPPLIER_CONTACT (10)
+-- SUPPLIER_CONTACT (45)
 INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (1, '214-555-0101', 'orders@freshfarm.com');
 INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (1, '214-555-0102', 'support@freshfarm.com');
 INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (2, '817-555-0201', 'sales@dairydirect.com');
@@ -43,8 +103,43 @@ INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (4, '469-555-0401', 'order
 INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (4, '469-555-0402', 'returns@sweetland.com');
 INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (5, '682-555-0501', 'info@nutribase.com');
 INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (5, '682-555-0502', 'wholesale@nutribase.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (6,  '214-555-0601', 'sales@suncoastproduce.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (7,  '214-555-0602', 'sales@metrodairy.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (8,  '214-555-0603', 'support@peakharvest.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (9,  '214-555-0604', 'orders@blueorchard.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (10, '214-555-0605', 'dispatch@valleyfresh.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (11, '214-555-0606', 'hello@riversidebev.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (12, '214-555-0607', 'orders@goldentropics.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (13, '214-555-0608', 'sales@northstarfoods.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (14, '214-555-0609', 'orders@cedargroveproduce.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (15, '214-555-0610', 'sales@harborlinedairy.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (16, '214-555-0611', 'support@sunriseorchard.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (17, '214-555-0612', 'orders@lonestarfruit.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (18, '214-555-0613', 'sales@greenforkingredients.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (19, '214-555-0614', 'billing@cascadecreamery.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (20, '214-555-0615', 'info@silverleaforganics.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (21, '214-555-0616', 'orders@redriverproduce.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (22, '214-555-0617', 'sales@prairieblend.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (23, '214-555-0618', 'support@westgatefoods.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (24, '214-555-0619', 'orders@canyoncitrus.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (25, '214-555-0620', 'contact@morningdewfarms.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (26, '214-555-0621', 'sales@urbanmarketproduce.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (27, '214-555-0622', 'orders@meadowlane.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (28, '214-555-0623', 'shipping@pacifictropic.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (29, '214-555-0624', 'hello@hillcrestcold.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (30, '214-555-0625', 'orders@orchardpointfoods.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (31, '214-555-0626', 'sales@granitepeakingredients.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (32, '214-555-0627', 'support@deltafreshdepot.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (33, '214-555-0628', 'orders@blueskydairy.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (34, '214-555-0629', 'info@southerngrove.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (35, '214-555-0630', 'hello@maplestreetwholesale.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (36, '214-555-0631', 'sales@highplainorganics.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (37, '214-555-0632', 'orders@redberryproduce.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (38, '214-555-0633', 'support@clearspringbev.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (39, '214-555-0634', 'sales@farmhouseingredients.com');
+INSERT INTO Spring26_S008_T10_Supplier_Contact VALUES (40, '214-555-0635', 'orders@coastalfruitnetwork.com');
 
--- STAFF (10)
+-- STAFF (40)
 INSERT INTO Spring26_S008_T10_Staff VALUES (1,  'Jordan',  'Rivera',  14.50);
 INSERT INTO Spring26_S008_T10_Staff VALUES (2,  'Priya',   'Nair',    15.00);
 INSERT INTO Spring26_S008_T10_Staff VALUES (3,  'Marcus',  'Owens',   14.00);
@@ -55,8 +150,38 @@ INSERT INTO Spring26_S008_T10_Staff VALUES (7,  'Tyler',   'Brooks',  13.75);
 INSERT INTO Spring26_S008_T10_Staff VALUES (8,  'Anaya',   'Jackson', 15.25);
 INSERT INTO Spring26_S008_T10_Staff VALUES (9,  'Carlos',  'Mendez',  14.75);
 INSERT INTO Spring26_S008_T10_Staff VALUES (10, 'Megan',   'Chu',     15.00);
+INSERT INTO Spring26_S008_T10_Staff VALUES (11, 'Elena',   'Park',    15.25);
+INSERT INTO Spring26_S008_T10_Staff VALUES (12, 'Noah',    'Kim',     14.50);
+INSERT INTO Spring26_S008_T10_Staff VALUES (13, 'Sofia',   'Ramirez', 15.00);
+INSERT INTO Spring26_S008_T10_Staff VALUES (14, 'Ethan',   'Cole',    14.25);
+INSERT INTO Spring26_S008_T10_Staff VALUES (15, 'Maya',    'Singh',   15.75);
+INSERT INTO Spring26_S008_T10_Staff VALUES (16, 'Liam',    'Foster',  14.75);
+INSERT INTO Spring26_S008_T10_Staff VALUES (17, 'Zoe',     'Bennett', 15.25);
+INSERT INTO Spring26_S008_T10_Staff VALUES (18, 'Isaac',   'Reed',    14.50);
+INSERT INTO Spring26_S008_T10_Staff VALUES (19, 'Aisha',   'Coleman', 15.50);
+INSERT INTO Spring26_S008_T10_Staff VALUES (20, 'Owen',    'Price',   14.00);
+INSERT INTO Spring26_S008_T10_Staff VALUES (21, 'Chloe',   'Ward',    15.00);
+INSERT INTO Spring26_S008_T10_Staff VALUES (22, 'Lucas',   'Bell',    14.25);
+INSERT INTO Spring26_S008_T10_Staff VALUES (23, 'Hannah',  'Ross',    15.25);
+INSERT INTO Spring26_S008_T10_Staff VALUES (24, 'Julian',  'Flores',  14.75);
+INSERT INTO Spring26_S008_T10_Staff VALUES (25, 'Stella',  'Nguyen',  15.50);
+INSERT INTO Spring26_S008_T10_Staff VALUES (26, 'Caleb',   'Perry',   14.50);
+INSERT INTO Spring26_S008_T10_Staff VALUES (27, 'Layla',   'Morris',  15.00);
+INSERT INTO Spring26_S008_T10_Staff VALUES (28, 'Mason',   'Cruz',    14.25);
+INSERT INTO Spring26_S008_T10_Staff VALUES (29, 'Nora',    'Hughes',  15.25);
+INSERT INTO Spring26_S008_T10_Staff VALUES (30, 'Gavin',   'Brooks',  14.75);
+INSERT INTO Spring26_S008_T10_Staff VALUES (31, 'Ruby',    'Jenkins', 15.00);
+INSERT INTO Spring26_S008_T10_Staff VALUES (32, 'Aaron',   'Long',    14.50);
+INSERT INTO Spring26_S008_T10_Staff VALUES (33, 'Sadie',   'Murphy',  15.25);
+INSERT INTO Spring26_S008_T10_Staff VALUES (34, 'Connor',  'West',    14.00);
+INSERT INTO Spring26_S008_T10_Staff VALUES (35, 'Ella',    'Sanders', 15.50);
+INSERT INTO Spring26_S008_T10_Staff VALUES (36, 'Wyatt',   'Ortiz',   14.75);
+INSERT INTO Spring26_S008_T10_Staff VALUES (37, 'Grace',   'Powell',  15.00);
+INSERT INTO Spring26_S008_T10_Staff VALUES (38, 'Henry',   'Bryant',  14.25);
+INSERT INTO Spring26_S008_T10_Staff VALUES (39, 'Lucy',    'Richardson', 15.25);
+INSERT INTO Spring26_S008_T10_Staff VALUES (40, 'Jack',    'Watson',  14.50);
 
--- MENU (17): 12 smoothies, 2 bowls, 3 ice cream
+-- MENU (40): 31 smoothies, 2 bowls, 7 ice cream
 INSERT INTO Spring26_S008_T10_Menu VALUES (1,  'Strawberry Banana Calypso', 'smoothie',  7.50);
 INSERT INTO Spring26_S008_T10_Menu VALUES (2,  'Mango Madness',             'smoothie',  7.75);
 INSERT INTO Spring26_S008_T10_Menu VALUES (3,  'Tropical Sunrise',          'smoothie',  8.00);
@@ -74,23 +199,74 @@ INSERT INTO Spring26_S008_T10_Menu VALUES (14, 'Yogurt Bowl',               'bow
 INSERT INTO Spring26_S008_T10_Menu VALUES (15, 'Vanilla Ice Cream',         'ice cream', 4.50);
 INSERT INTO Spring26_S008_T10_Menu VALUES (16, 'Chocolate Ice Cream',       'ice cream', 4.50);
 INSERT INTO Spring26_S008_T10_Menu VALUES (17, 'Strawberry Ice Cream',      'ice cream', 4.50);
+INSERT INTO Spring26_S008_T10_Menu VALUES (18, 'Spinach Mango Lift',        'smoothie',  8.25);
+INSERT INTO Spring26_S008_T10_Menu VALUES (19, 'Kale Pineapple Cooler',     'smoothie',  8.50);
+INSERT INTO Spring26_S008_T10_Menu VALUES (20, 'Matcha Mint Fusion',        'smoothie',  8.75);
+INSERT INTO Spring26_S008_T10_Menu VALUES (21, 'Espresso Banana Boost',     'smoothie',  8.75);
+INSERT INTO Spring26_S008_T10_Menu VALUES (22, 'Raspberry Citrus Splash',   'smoothie',  8.25);
+INSERT INTO Spring26_S008_T10_Menu VALUES (23, 'Dragon Fruit Breeze',       'smoothie',  8.75);
+INSERT INTO Spring26_S008_T10_Menu VALUES (24, 'Kiwi Lime Crush',           'smoothie',  8.25);
+INSERT INTO Spring26_S008_T10_Menu VALUES (25, 'Peanut Butter Power',       'smoothie',  8.50);
+INSERT INTO Spring26_S008_T10_Menu VALUES (26, 'Oatmeal Berry Blend',       'smoothie',  8.25);
+INSERT INTO Spring26_S008_T10_Menu VALUES (27, 'Orange Sunrise Shake',      'smoothie',  8.00);
+INSERT INTO Spring26_S008_T10_Menu VALUES (28, 'Caramel Coffee Chill',      'smoothie',  8.75);
+INSERT INTO Spring26_S008_T10_Menu VALUES (29, 'Cocoa Almond Frost',        'smoothie',  8.50);
+INSERT INTO Spring26_S008_T10_Menu VALUES (30, 'Green Protein Charge',      'smoothie',  8.75);
+INSERT INTO Spring26_S008_T10_Menu VALUES (31, 'Mint Chocolate Swirl',      'smoothie',  8.50);
+INSERT INTO Spring26_S008_T10_Menu VALUES (32, 'Pomegranate Peach Splash',  'smoothie',  8.50);
+INSERT INTO Spring26_S008_T10_Menu VALUES (33, 'Raspberry Yogurt Chill',    'smoothie',  8.25);
+INSERT INTO Spring26_S008_T10_Menu VALUES (34, 'Blackberry Banana Smoothie','smoothie',  8.25);
+INSERT INTO Spring26_S008_T10_Menu VALUES (35, 'Coconut Matcha Wave',       'smoothie',  8.75);
+INSERT INTO Spring26_S008_T10_Menu VALUES (36, 'Almond Oat Shake',          'smoothie',  8.25);
+INSERT INTO Spring26_S008_T10_Menu VALUES (37, 'Coffee Cookie Cream',       'ice cream', 5.25);
+INSERT INTO Spring26_S008_T10_Menu VALUES (38, 'Caramel Vanilla Scoop',     'ice cream', 5.00);
+INSERT INTO Spring26_S008_T10_Menu VALUES (39, 'Berry Crunch Sundae',       'ice cream', 5.50);
+INSERT INTO Spring26_S008_T10_Menu VALUES (40, 'Tropical Citrus Sorbet',    'ice cream', 5.25);
 
--- INVENTORY (15 — one per ingredient, ingredient_id UNIQUE enforced by DDL)
+-- INVENTORY (40 - one per ingredient, ingredient_id UNIQUE enforced by DDL)
 INSERT INTO Spring26_S008_T10_Inventory VALUES (1,  5.00, 22.00,  1);
 INSERT INTO Spring26_S008_T10_Inventory VALUES (2,  8.00, 30.00,  2);
 INSERT INTO Spring26_S008_T10_Inventory VALUES (3,  8.00, 12.00,  3);
 INSERT INTO Spring26_S008_T10_Inventory VALUES (4,  6.00, 18.00,  4);
-INSERT INTO Spring26_S008_T10_Inventory VALUES (5,  5.00,  7.00,  5);  -- Granola LOW
+-- Granola LOW
+INSERT INTO Spring26_S008_T10_Inventory VALUES (5,  5.00,  7.00,  5);
 INSERT INTO Spring26_S008_T10_Inventory VALUES (6,  4.00, 15.00,  6);
 INSERT INTO Spring26_S008_T10_Inventory VALUES (7,  6.00, 20.00,  7);
-INSERT INTO Spring26_S008_T10_Inventory VALUES (8,  3.00,  4.00,  8);  -- Honey LOW
+-- Honey LOW
+INSERT INTO Spring26_S008_T10_Inventory VALUES (8,  3.00,  4.00,  8);
 INSERT INTO Spring26_S008_T10_Inventory VALUES (9,  5.00, 11.00,  9);
 INSERT INTO Spring26_S008_T10_Inventory VALUES (10, 5.00, 14.00, 10);
 INSERT INTO Spring26_S008_T10_Inventory VALUES (11, 4.00, 16.00, 11);
 INSERT INTO Spring26_S008_T10_Inventory VALUES (12, 4.00, 13.00, 12);
-INSERT INTO Spring26_S008_T10_Inventory VALUES (13, 4.00,  3.00, 13);  -- Straw IC LOW
+-- Straw IC LOW
+INSERT INTO Spring26_S008_T10_Inventory VALUES (13, 4.00,  3.00, 13);
 INSERT INTO Spring26_S008_T10_Inventory VALUES (14, 3.00,  9.00, 14);
 INSERT INTO Spring26_S008_T10_Inventory VALUES (15, 5.00, 10.00, 15);
+INSERT INTO Spring26_S008_T10_Inventory VALUES (16, 5.00, 18.00, 16);
+INSERT INTO Spring26_S008_T10_Inventory VALUES (17, 5.00, 16.00, 17);
+INSERT INTO Spring26_S008_T10_Inventory VALUES (18, 6.00, 22.00, 18);
+INSERT INTO Spring26_S008_T10_Inventory VALUES (19, 6.00, 20.00, 19);
+INSERT INTO Spring26_S008_T10_Inventory VALUES (20, 3.00, 14.00, 20);
+INSERT INTO Spring26_S008_T10_Inventory VALUES (21, 4.00, 12.00, 21);
+INSERT INTO Spring26_S008_T10_Inventory VALUES (22, 2.00,  9.00, 22);
+INSERT INTO Spring26_S008_T10_Inventory VALUES (23, 2.00,  8.00, 23);
+INSERT INTO Spring26_S008_T10_Inventory VALUES (24, 5.00, 25.00, 24);
+INSERT INTO Spring26_S008_T10_Inventory VALUES (25, 5.00, 17.00, 25);
+INSERT INTO Spring26_S008_T10_Inventory VALUES (26, 5.00, 16.00, 26);
+INSERT INTO Spring26_S008_T10_Inventory VALUES (27, 5.00, 15.00, 27);
+INSERT INTO Spring26_S008_T10_Inventory VALUES (28, 4.00, 11.00, 28);
+INSERT INTO Spring26_S008_T10_Inventory VALUES (29, 3.00, 13.00, 29);
+INSERT INTO Spring26_S008_T10_Inventory VALUES (30, 3.00, 12.00, 30);
+INSERT INTO Spring26_S008_T10_Inventory VALUES (31, 2.00, 10.00, 31);
+INSERT INTO Spring26_S008_T10_Inventory VALUES (32, 4.00, 18.00, 32);
+INSERT INTO Spring26_S008_T10_Inventory VALUES (33, 3.00, 14.00, 33);
+INSERT INTO Spring26_S008_T10_Inventory VALUES (34, 3.00, 15.00, 34);
+INSERT INTO Spring26_S008_T10_Inventory VALUES (35, 4.00, 19.00, 35);
+INSERT INTO Spring26_S008_T10_Inventory VALUES (36, 3.00, 20.00, 36);
+INSERT INTO Spring26_S008_T10_Inventory VALUES (37, 4.00, 18.00, 37);
+INSERT INTO Spring26_S008_T10_Inventory VALUES (38, 4.00, 13.00, 38);
+INSERT INTO Spring26_S008_T10_Inventory VALUES (39, 5.00, 21.00, 39);
+INSERT INTO Spring26_S008_T10_Inventory VALUES (40, 4.00, 12.00, 40);
 
 -- SHIFT (50 rows, Q1 2026)
 INSERT INTO Spring26_S008_T10_Shift VALUES (1,  DATE '2026-01-05', TIMESTAMP '2026-01-05 08:00:00', TIMESTAMP '2026-01-05 14:00:00');
@@ -144,7 +320,7 @@ INSERT INTO Spring26_S008_T10_Shift VALUES (8,  DATE '2026-03-25', TIMESTAMP '20
 INSERT INTO Spring26_S008_T10_Shift VALUES (9,  DATE '2026-03-26', TIMESTAMP '2026-03-26 12:00:00', TIMESTAMP '2026-03-26 18:00:00');
 INSERT INTO Spring26_S008_T10_Shift VALUES (10, DATE '2026-03-27', TIMESTAMP '2026-03-27 09:00:00', TIMESTAMP '2026-03-27 15:00:00');
 
--- RECIPE (48)
+-- RECIPE (117)
 INSERT INTO Spring26_S008_T10_Recipe VALUES (1,  1,  1.000);
 INSERT INTO Spring26_S008_T10_Recipe VALUES (3,  1,  4.000);
 INSERT INTO Spring26_S008_T10_Recipe VALUES (4,  1,  3.000);
@@ -193,6 +369,75 @@ INSERT INTO Spring26_S008_T10_Recipe VALUES (8,  14, 1.000);
 INSERT INTO Spring26_S008_T10_Recipe VALUES (11, 15, 2.000);
 INSERT INTO Spring26_S008_T10_Recipe VALUES (12, 16, 2.000);
 INSERT INTO Spring26_S008_T10_Recipe VALUES (13, 17, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (16, 18, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (2,  18, 3.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (18, 18, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (17, 19, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (10, 19, 3.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (18, 19, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (22, 20, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (31, 20, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (18, 20, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (23, 21, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (4,  21, 3.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (18, 21, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (25, 22, 3.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (24, 22, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (29, 22, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (28, 23, 3.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (10, 23, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (18, 23, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (27, 24, 3.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (30, 24, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (18, 24, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (21, 25, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (4,  25, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (18, 25, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (25, 26, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (26, 26, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (39, 26, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (24, 27, 3.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (10, 27, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (19, 27, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (23, 28, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (34, 28, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (18, 28, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (33, 29, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (38, 29, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (18, 29, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (16, 30, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (17, 30, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (32, 30, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (12, 31, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (31, 31, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (18, 31, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (40, 32, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (15, 32, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (24, 32, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (25, 33, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (37, 33, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (18, 33, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (26, 34, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (4,  34, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (18, 34, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (14, 35, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (22, 35, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (19, 35, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (19, 36, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (39, 36, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (36, 36, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (11, 37, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (23, 37, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (35, 37, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (11, 38, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (34, 38, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (36, 38, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (13, 39, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (25, 39, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (35, 39, 1.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (10, 40, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (24, 40, 2.000);
+INSERT INTO Spring26_S008_T10_Recipe VALUES (29, 40, 1.000);
 
 -- ORDERS (50)
 INSERT INTO Spring26_S008_T10_Orders VALUES (1001, TIMESTAMP '2026-01-05 08:15:00',  7.50);
@@ -246,7 +491,7 @@ INSERT INTO Spring26_S008_T10_Orders VALUES (1048, TIMESTAMP '2026-03-23 15:15:0
 INSERT INTO Spring26_S008_T10_Orders VALUES (1049, TIMESTAMP '2026-03-24 13:45:00', 12.00);
 INSERT INTO Spring26_S008_T10_Orders VALUES (1050, TIMESTAMP '2026-03-27 14:00:00',  9.50);
 
--- CONTAINED (65 rows)
+-- CONTAINED (66 rows)
 INSERT INTO Spring26_S008_T10_Contained VALUES (1001, 1,  1);
 INSERT INTO Spring26_S008_T10_Contained VALUES (1002, 3,  1);
 INSERT INTO Spring26_S008_T10_Contained VALUES (1002, 15, 1);
@@ -314,7 +559,7 @@ INSERT INTO Spring26_S008_T10_Contained VALUES (1049, 11, 1);
 INSERT INTO Spring26_S008_T10_Contained VALUES (1049, 16, 1);
 INSERT INTO Spring26_S008_T10_Contained VALUES (1050, 13, 1);
 
--- CONTAIN_CUSTOMIZATION (28)
+-- CONTAIN_CUSTOMIZATION (40)
 INSERT INTO Spring26_S008_T10_Contain_Customization VALUES (1003, 13, 'extra granola');
 INSERT INTO Spring26_S008_T10_Contain_Customization VALUES (1003, 13, 'add honey');
 INSERT INTO Spring26_S008_T10_Contain_Customization VALUES (1004, 14, 'no banana');
@@ -343,8 +588,20 @@ INSERT INTO Spring26_S008_T10_Contain_Customization VALUES (1044, 13, 'no banana
 INSERT INTO Spring26_S008_T10_Contain_Customization VALUES (1047, 14, 'extra granola');
 INSERT INTO Spring26_S008_T10_Contain_Customization VALUES (1050, 13, 'extra granola');
 INSERT INTO Spring26_S008_T10_Contain_Customization VALUES (1050, 13, 'add honey');
+INSERT INTO Spring26_S008_T10_Contain_Customization VALUES (1018, 13, 'extra acai');
+INSERT INTO Spring26_S008_T10_Contain_Customization VALUES (1024, 13, 'extra banana');
+INSERT INTO Spring26_S008_T10_Contain_Customization VALUES (1030, 14, 'add coconut');
+INSERT INTO Spring26_S008_T10_Contain_Customization VALUES (1033, 14, 'add granola');
+INSERT INTO Spring26_S008_T10_Contain_Customization VALUES (1034, 14, 'extra honey');
+INSERT INTO Spring26_S008_T10_Contain_Customization VALUES (1036, 5,  'extra peach');
+INSERT INTO Spring26_S008_T10_Contain_Customization VALUES (1037, 3,  'no yogurt');
+INSERT INTO Spring26_S008_T10_Contain_Customization VALUES (1042, 9,  'extra blueberry');
+INSERT INTO Spring26_S008_T10_Contain_Customization VALUES (1045, 8,  'extra pineapple');
+INSERT INTO Spring26_S008_T10_Contain_Customization VALUES (1046, 1,  'light honey');
+INSERT INTO Spring26_S008_T10_Contain_Customization VALUES (1048, 14, 'add strawberry');
+INSERT INTO Spring26_S008_T10_Contain_Customization VALUES (1049, 11, 'extra mango');
 
--- DELIVERY (12)
+-- DELIVERY (40)
 INSERT INTO Spring26_S008_T10_Delivery VALUES (1,  DATE '2026-01-03', 312.50, 1, 1);
 INSERT INTO Spring26_S008_T10_Delivery VALUES (2,  DATE '2026-01-03', 280.00, 2, 2);
 INSERT INTO Spring26_S008_T10_Delivery VALUES (3,  DATE '2026-01-10', 195.75, 3, 3);
@@ -357,8 +614,36 @@ INSERT INTO Spring26_S008_T10_Delivery VALUES (9,  DATE '2026-02-21', 145.00, 1,
 INSERT INTO Spring26_S008_T10_Delivery VALUES (10, DATE '2026-03-07', 295.00, 2, 5);
 INSERT INTO Spring26_S008_T10_Delivery VALUES (11, DATE '2026-03-07', 270.00, 3, 1);
 INSERT INTO Spring26_S008_T10_Delivery VALUES (12, DATE '2026-03-21', 198.25, 4, 2);
+INSERT INTO Spring26_S008_T10_Delivery VALUES (13, DATE '2026-01-28', 84.00,  5,  6);
+INSERT INTO Spring26_S008_T10_Delivery VALUES (14, DATE '2026-01-29', 96.00,  6,  7);
+INSERT INTO Spring26_S008_T10_Delivery VALUES (15, DATE '2026-02-01', 72.00,  7,  8);
+INSERT INTO Spring26_S008_T10_Delivery VALUES (16, DATE '2026-02-02', 75.00,  8,  9);
+INSERT INTO Spring26_S008_T10_Delivery VALUES (17, DATE '2026-02-03', 68.00,  9,  10);
+INSERT INTO Spring26_S008_T10_Delivery VALUES (18, DATE '2026-02-04', 79.00,  10, 11);
+INSERT INTO Spring26_S008_T10_Delivery VALUES (19, DATE '2026-02-08', 64.00,  1,  12);
+INSERT INTO Spring26_S008_T10_Delivery VALUES (20, DATE '2026-02-10', 58.00,  2,  13);
+INSERT INTO Spring26_S008_T10_Delivery VALUES (21, DATE '2026-02-11', 88.00,  3,  14);
+INSERT INTO Spring26_S008_T10_Delivery VALUES (22, DATE '2026-02-12', 82.00,  4,  15);
+INSERT INTO Spring26_S008_T10_Delivery VALUES (23, DATE '2026-02-15', 77.00,  5,  16);
+INSERT INTO Spring26_S008_T10_Delivery VALUES (24, DATE '2026-02-16', 69.00,  6,  17);
+INSERT INTO Spring26_S008_T10_Delivery VALUES (25, DATE '2026-02-17', 91.00,  7,  18);
+INSERT INTO Spring26_S008_T10_Delivery VALUES (26, DATE '2026-02-18', 62.00,  8,  19);
+INSERT INTO Spring26_S008_T10_Delivery VALUES (27, DATE '2026-02-22', 66.00,  9,  20);
+INSERT INTO Spring26_S008_T10_Delivery VALUES (28, DATE '2026-02-23', 55.00,  10, 21);
+INSERT INTO Spring26_S008_T10_Delivery VALUES (29, DATE '2026-02-24', 94.00,  1,  22);
+INSERT INTO Spring26_S008_T10_Delivery VALUES (30, DATE '2026-03-01', 73.00,  2,  23);
+INSERT INTO Spring26_S008_T10_Delivery VALUES (31, DATE '2026-03-03', 81.00,  3,  24);
+INSERT INTO Spring26_S008_T10_Delivery VALUES (32, DATE '2026-03-04', 87.00,  4,  25);
+INSERT INTO Spring26_S008_T10_Delivery VALUES (33, DATE '2026-03-08', 76.00,  5,  26);
+INSERT INTO Spring26_S008_T10_Delivery VALUES (34, DATE '2026-03-09', 83.00,  6,  27);
+INSERT INTO Spring26_S008_T10_Delivery VALUES (35, DATE '2026-03-10', 71.00,  7,  28);
+INSERT INTO Spring26_S008_T10_Delivery VALUES (36, DATE '2026-03-11', 65.00,  8,  29);
+INSERT INTO Spring26_S008_T10_Delivery VALUES (37, DATE '2026-03-14', 92.00,  9,  30);
+INSERT INTO Spring26_S008_T10_Delivery VALUES (38, DATE '2026-03-15', 78.00,  10, 31);
+INSERT INTO Spring26_S008_T10_Delivery VALUES (39, DATE '2026-03-22', 74.00,  1,  32);
+INSERT INTO Spring26_S008_T10_Delivery VALUES (40, DATE '2026-03-23', 86.00,  2,  33);
 
--- DELIVERY_ITEM (43 rows — SUM(line_cost) per delivery verified)
+-- DELIVERY_ITEM (67 rows - SUM(line_cost) per delivery verified)
 -- Delivery 1 total=312.50
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (1,  3,  50.00,  87.50);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (1,  4,  60.00,  90.00);
@@ -410,6 +695,62 @@ INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (11, 15, 20.00,  40.00);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (12, 1,  30.00,  90.00);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (12, 7,  25.00,  75.00);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (12, 11, 10.00,  33.25);
+-- Delivery 13 total=84.00
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (13, 16, 20.00, 84.00);
+-- Delivery 14 total=96.00
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (14, 17, 22.00, 96.00);
+-- Delivery 15 total=72.00
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (15, 18, 30.00, 72.00);
+-- Delivery 16 total=75.00
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (16, 19, 25.00, 75.00);
+-- Delivery 17 total=68.00
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (17, 20, 18.00, 68.00);
+-- Delivery 18 total=79.00
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (18, 21, 16.00, 79.00);
+-- Delivery 19 total=64.00
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (19, 22, 12.00, 64.00);
+-- Delivery 20 total=58.00
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (20, 23, 10.00, 58.00);
+-- Delivery 21 total=88.00
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (21, 24, 28.00, 88.00);
+-- Delivery 22 total=82.00
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (22, 25, 20.00, 82.00);
+-- Delivery 23 total=77.00
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (23, 26, 18.00, 77.00);
+-- Delivery 24 total=69.00
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (24, 27, 16.00, 69.00);
+-- Delivery 25 total=91.00
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (25, 28, 18.00, 91.00);
+-- Delivery 26 total=62.00
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (26, 29, 14.00, 62.00);
+-- Delivery 27 total=66.00
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (27, 30, 15.00, 66.00);
+-- Delivery 28 total=55.00
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (28, 31, 12.00, 55.00);
+-- Delivery 29 total=94.00
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (29, 32, 20.00, 94.00);
+-- Delivery 30 total=73.00
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (30, 33, 15.00, 73.00);
+-- Delivery 31 total=81.00
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (31, 34, 18.00, 81.00);
+-- Delivery 32 total=87.00
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (32, 35, 22.00, 87.00);
+-- Delivery 33 total=76.00
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (33, 36, 20.00, 76.00);
+-- Delivery 34 total=83.00
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (34, 37, 18.00, 83.00);
+-- Delivery 35 total=71.00
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (35, 38, 16.00, 71.00);
+-- Delivery 36 total=65.00
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (36, 39, 18.00, 65.00);
+-- Delivery 37 total=92.00
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (37, 40, 20.00, 92.00);
+-- Delivery 38 total=78.00
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (38, 16, 18.00, 78.00);
+-- Delivery 39 total=74.00
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (39, 17, 17.00, 74.00);
+-- Delivery 40 total=86.00
+INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (40, 18, 24.00, 86.00);
 
 COMMIT;
 -- =============================================================

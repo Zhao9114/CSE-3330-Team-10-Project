@@ -157,6 +157,110 @@ CREATE TABLE Spring26_S008_T10_Contain_Customization (
         REFERENCES Spring26_S008_T10_Contained(order_num, product_id)
 );
 
+-- -------------------------------------------------------------
+-- TRIGGERS: Keep derived totals synchronized with child rows
+-- -------------------------------------------------------------
+
+CREATE OR REPLACE TRIGGER Spring26_S008_T10_trg_order_total
+FOR INSERT OR UPDATE OR DELETE ON Spring26_S008_T10_Contained
+COMPOUND TRIGGER
+    TYPE t_order_seen IS TABLE OF BOOLEAN INDEX BY PLS_INTEGER;
+    g_order_seen t_order_seen;
+
+    PROCEDURE mark_order(p_order_num NUMBER) IS
+    BEGIN
+        IF p_order_num IS NOT NULL THEN
+            g_order_seen(p_order_num) := TRUE;
+        END IF;
+    END mark_order;
+
+    AFTER EACH ROW IS
+    BEGIN
+        IF INSERTING OR UPDATING THEN
+            mark_order(:NEW.order_num);
+        END IF;
+
+        IF DELETING OR UPDATING THEN
+            mark_order(:OLD.order_num);
+        END IF;
+    END AFTER EACH ROW;
+
+    AFTER STATEMENT IS
+        l_order_num PLS_INTEGER;
+    BEGIN
+        l_order_num := g_order_seen.FIRST;
+
+        WHILE l_order_num IS NOT NULL LOOP
+            UPDATE Spring26_S008_T10_Orders o
+               SET total_price = NVL((
+                       SELECT ROUND(SUM(c.quantity * m.price), 2)
+                         FROM Spring26_S008_T10_Contained c
+                         JOIN Spring26_S008_T10_Menu m
+                           ON m.product_id = c.product_id
+                        WHERE c.order_num = l_order_num
+                   ), 0)
+             WHERE o.order_num = l_order_num;
+
+            l_order_num := g_order_seen.NEXT(l_order_num);
+        END LOOP;
+    END AFTER STATEMENT;
+END Spring26_S008_T10_trg_order_total;
+/
+
+CREATE OR REPLACE TRIGGER Spring26_S008_T10_trg_contained_delete
+BEFORE DELETE ON Spring26_S008_T10_Contained
+FOR EACH ROW
+BEGIN
+    DELETE FROM Spring26_S008_T10_Contain_Customization
+     WHERE order_num = :OLD.order_num
+       AND product_id = :OLD.product_id;
+END Spring26_S008_T10_trg_contained_delete;
+/
+
+CREATE OR REPLACE TRIGGER Spring26_S008_T10_trg_delivery_total
+FOR INSERT OR UPDATE OR DELETE ON Spring26_S008_T10_Delivery_Item
+COMPOUND TRIGGER
+    TYPE t_delivery_seen IS TABLE OF BOOLEAN INDEX BY PLS_INTEGER;
+    g_delivery_seen t_delivery_seen;
+
+    PROCEDURE mark_delivery(p_delivery_id NUMBER) IS
+    BEGIN
+        IF p_delivery_id IS NOT NULL THEN
+            g_delivery_seen(p_delivery_id) := TRUE;
+        END IF;
+    END mark_delivery;
+
+    AFTER EACH ROW IS
+    BEGIN
+        IF INSERTING OR UPDATING THEN
+            mark_delivery(:NEW.delivery_id);
+        END IF;
+
+        IF DELETING OR UPDATING THEN
+            mark_delivery(:OLD.delivery_id);
+        END IF;
+    END AFTER EACH ROW;
+
+    AFTER STATEMENT IS
+        l_delivery_id PLS_INTEGER;
+    BEGIN
+        l_delivery_id := g_delivery_seen.FIRST;
+
+        WHILE l_delivery_id IS NOT NULL LOOP
+            UPDATE Spring26_S008_T10_Delivery d
+               SET total_cost = NVL((
+                       SELECT ROUND(SUM(di.line_cost), 2)
+                         FROM Spring26_S008_T10_Delivery_Item di
+                        WHERE di.delivery_id = l_delivery_id
+                   ), 0)
+             WHERE d.delivery_id = l_delivery_id;
+
+            l_delivery_id := g_delivery_seen.NEXT(l_delivery_id);
+        END LOOP;
+    END AFTER STATEMENT;
+END Spring26_S008_T10_trg_delivery_total;
+/
+
 -- =============================================================
 -- END OF CREATE SCRIPT
 -- =============================================================
