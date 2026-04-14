@@ -1,9 +1,10 @@
--- =============================================================
--- Team 10 | CSE 3330/5330-008 | Spring 2026
--- Members: Zheng Yao Wong, Roberto Lira, Mahad Imran, Kaung Zaw Thant
--- File: projectDBdrop.sql
--- Purpose: Drop all 13 tables in reverse creation order (children first)
--- =============================================================
+/* 
+Team 10 | CSE 3330/5330-008 | Spring 2026
+Members: Zheng Yao Wong, Roberto Lira, Mahad Imran, Kaung Zaw Thant
+File: projectDBdrop.sql
+
+Purpose: Drop all 13 tables in reverse creation order
+*/ 
 
 -- TIER 4
 BEGIN EXECUTE IMMEDIATE 'DROP TABLE Spring26_S008_T10_Contain_Customization PURGE'; EXCEPTION WHEN OTHERS THEN IF SQLCODE != -942 THEN RAISE; END IF; END;
@@ -40,7 +41,3 @@ BEGIN EXECUTE IMMEDIATE 'DROP TABLE Spring26_S008_T10_Ingredient PURGE'; EXCEPTI
 /
 
 PURGE RECYCLEBIN;
-
--- =============================================================
--- END OF DROP SCRIPT
--- =============================================================

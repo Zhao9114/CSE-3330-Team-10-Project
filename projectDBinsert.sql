@@ -1,12 +1,14 @@
--- =============================================================
--- Team 10 | CSE 3330/5330-008 | Spring 2026
--- Members: Zheng Yao Wong, Roberto Lira, Mahad Imran, Kaung Zaw Thant
--- File: projectDBinsert.sql
--- Purpose: Populate all 13 tables with realistic smoothie shop data
--- Row counts: Ingredient=40, Supplier=40, Supplier_Contact=45, Staff=40,
---   Menu=40, Inventory=40, Shift=50, Recipe=117, Orders=50,
---   Contained=66, Contain_Customization=40, Delivery=40, Delivery_Item=67
--- =============================================================
+/*
+Team 10 | CSE 3330/5330-008 | Spring 2026
+Members: Zheng Yao Wong, Roberto Lira, Mahad Imran, Kaung Zaw Thant
+File: projectDBinsert.sql
+
+Purpose: Populate all 13 tables with realistic smoothie shop data
+
+Row counts: Ingredient=40, Supplier=40, Supplier_Contact=45, Staff=40,
+Menu=40, Inventory=40, Shift=50, Recipe=117, Orders=50,
+Contained=66, Contain_Customization=40, Delivery=40, Delivery_Item=67
+*/
 
 -- INGREDIENT (40)
 INSERT INTO Spring26_S008_T10_Ingredient VALUES (1,  'Yogurt Base',          'cup');
@@ -643,116 +645,74 @@ INSERT INTO Spring26_S008_T10_Delivery VALUES (38, DATE '2026-03-15', 78.00,  10
 INSERT INTO Spring26_S008_T10_Delivery VALUES (39, DATE '2026-03-22', 74.00,  1,  32);
 INSERT INTO Spring26_S008_T10_Delivery VALUES (40, DATE '2026-03-23', 86.00,  2,  33);
 
--- DELIVERY_ITEM (67 rows - SUM(line_cost) per delivery verified)
--- Delivery 1 total=312.50
+-- DELIVERY_ITEM (67)
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (1,  3,  50.00,  87.50);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (1,  4,  60.00,  90.00);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (1,  9,  40.00,  75.00);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (1,  15, 30.00,  60.00);
--- Delivery 2 total=280.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (2,  1,  40.00, 120.00);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (2,  7,  30.00,  90.00);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (2,  11, 20.00,  70.00);
--- Delivery 3 total=195.75
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (3,  2,  45.00,  99.00);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (3,  10, 35.00,  61.25);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (3,  6,  10.00,  35.50);
--- Delivery 4 total=150.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (4,  12, 20.00,  70.00);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (4,  13, 15.00,  52.50);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (4,  8,  10.00,  27.50);
--- Delivery 5 total=220.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (5,  5,  55.00, 117.50);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (5,  14, 25.00,  62.50);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (5,  8,  20.00,  40.00);
--- Delivery 6 total=310.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (6,  3,  55.00,  96.25);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (6,  4,  65.00,  97.50);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (6,  9,  35.00,  65.75);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (6,  15, 25.00,  50.50);
--- Delivery 7 total=260.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (7,  1,  35.00, 105.00);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (7,  7,  25.00,  75.00);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (7,  12, 20.00,  80.00);
--- Delivery 8 total=180.50
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (8,  2,  40.00,  88.00);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (8,  10, 30.00,  52.50);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (8,  6,  10.00,  40.00);
--- Delivery 9 total=145.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (9,  11, 18.00,  63.00);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (9,  13, 14.00,  49.00);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (9,  8,  12.00,  33.00);
--- Delivery 10 total=295.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (10, 5,  60.00, 150.00);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (10, 14, 40.00, 100.00);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (10, 8,  20.00,  45.00);
--- Delivery 11 total=270.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (11, 3,  50.00,  87.50);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (11, 4,  55.00,  82.50);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (11, 9,  40.00,  60.00);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (11, 15, 20.00,  40.00);
--- Delivery 12 total=198.25
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (12, 1,  30.00,  90.00);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (12, 7,  25.00,  75.00);
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (12, 11, 10.00,  33.25);
--- Delivery 13 total=84.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (13, 16, 20.00, 84.00);
--- Delivery 14 total=96.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (14, 17, 22.00, 96.00);
--- Delivery 15 total=72.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (15, 18, 30.00, 72.00);
--- Delivery 16 total=75.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (16, 19, 25.00, 75.00);
--- Delivery 17 total=68.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (17, 20, 18.00, 68.00);
--- Delivery 18 total=79.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (18, 21, 16.00, 79.00);
--- Delivery 19 total=64.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (19, 22, 12.00, 64.00);
--- Delivery 20 total=58.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (20, 23, 10.00, 58.00);
--- Delivery 21 total=88.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (21, 24, 28.00, 88.00);
--- Delivery 22 total=82.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (22, 25, 20.00, 82.00);
--- Delivery 23 total=77.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (23, 26, 18.00, 77.00);
--- Delivery 24 total=69.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (24, 27, 16.00, 69.00);
--- Delivery 25 total=91.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (25, 28, 18.00, 91.00);
--- Delivery 26 total=62.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (26, 29, 14.00, 62.00);
--- Delivery 27 total=66.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (27, 30, 15.00, 66.00);
--- Delivery 28 total=55.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (28, 31, 12.00, 55.00);
--- Delivery 29 total=94.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (29, 32, 20.00, 94.00);
--- Delivery 30 total=73.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (30, 33, 15.00, 73.00);
--- Delivery 31 total=81.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (31, 34, 18.00, 81.00);
--- Delivery 32 total=87.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (32, 35, 22.00, 87.00);
--- Delivery 33 total=76.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (33, 36, 20.00, 76.00);
--- Delivery 34 total=83.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (34, 37, 18.00, 83.00);
--- Delivery 35 total=71.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (35, 38, 16.00, 71.00);
--- Delivery 36 total=65.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (36, 39, 18.00, 65.00);
--- Delivery 37 total=92.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (37, 40, 20.00, 92.00);
--- Delivery 38 total=78.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (38, 16, 18.00, 78.00);
--- Delivery 39 total=74.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (39, 17, 17.00, 74.00);
--- Delivery 40 total=86.00
 INSERT INTO Spring26_S008_T10_Delivery_Item VALUES (40, 18, 24.00, 86.00);
 
 COMMIT;
--- =============================================================
--- END OF INSERT SCRIPT
--- =============================================================
+

@@ -1,15 +1,13 @@
--- =============================================================
--- Team 10 | CSE 3330/5330-008 | Spring 2026
--- Members: Zheng Yao Wong, Roberto Lira, Mahad Imran, Kaung Zaw Thant
--- File: projectDBcreate.sql
--- Purpose: Create all 13 tables in dependency order (parents first)
--- Prefix: Spring26_S008_T10_
--- =============================================================
+/* 
+Team 10 | CSE 3330-008 | Spring 2026
+Members: Zheng Yao Wong, Roberto Lira, Mahad Imran, Kaung Zaw Thant
+File: projectDBqueries.sql
 
--- -------------------------------------------------------------
+Purpose: Create all 13 tables with appropriate constraints and triggers
+to maintain data integrity and derived totals.
+*/
+
 -- TIER 1: No foreign key dependencies
--- -------------------------------------------------------------
-
 CREATE TABLE Spring26_S008_T10_Ingredient (
     ingredient_id       NUMBER(5)       PRIMARY KEY,
     ingredient_name     VARCHAR2(100)   NOT NULL,
@@ -42,10 +40,7 @@ CREATE TABLE Spring26_S008_T10_Orders (
     total_price         NUMBER(7,2)     NOT NULL CHECK (total_price >= 0)
 );
 
--- -------------------------------------------------------------
 -- TIER 2: Reference Tier 1 tables
--- -------------------------------------------------------------
-
 CREATE TABLE Spring26_S008_T10_Inventory (
     inventory_id        NUMBER(5)       PRIMARY KEY,
     reorder_threshold   NUMBER(8,2)     NOT NULL CHECK (reorder_threshold >= 0),
@@ -109,10 +104,7 @@ CREATE TABLE Spring26_S008_T10_Delivery (
         REFERENCES Spring26_S008_T10_Supplier(supplier_id)
 );
 
--- -------------------------------------------------------------
 -- TIER 3: Reference Tier 2 tables
--- -------------------------------------------------------------
-
 CREATE TABLE Spring26_S008_T10_Delivery_Item (
     delivery_id         NUMBER(5)       NOT NULL,
     inventory_id        NUMBER(5)       NOT NULL,
@@ -142,10 +134,7 @@ CREATE TABLE Spring26_S008_T10_Contained (
         REFERENCES Spring26_S008_T10_Menu(product_id)
 );
 
--- -------------------------------------------------------------
--- TIER 4: References Tier 3 (Contained)
--- -------------------------------------------------------------
-
+-- TIER 4: References Tier 3 
 CREATE TABLE Spring26_S008_T10_Contain_Customization (
     order_num       NUMBER(7)       NOT NULL,
     product_id      NUMBER(5)       NOT NULL,
@@ -157,10 +146,7 @@ CREATE TABLE Spring26_S008_T10_Contain_Customization (
         REFERENCES Spring26_S008_T10_Contained(order_num, product_id)
 );
 
--- -------------------------------------------------------------
 -- TRIGGERS: Keep derived totals synchronized with child rows
--- -------------------------------------------------------------
-
 CREATE OR REPLACE TRIGGER Spring26_S008_T10_trg_order_total
 FOR INSERT OR UPDATE OR DELETE ON Spring26_S008_T10_Contained
 COMPOUND TRIGGER
@@ -261,6 +247,3 @@ COMPOUND TRIGGER
 END Spring26_S008_T10_trg_delivery_total;
 /
 
--- =============================================================
--- END OF CREATE SCRIPT
--- =============================================================
